@@ -23,8 +23,17 @@ document = html
 
 */
 
-function cliqueiNoBotao() {
-    let cidade = document.querySelector(".input-cidade").value
 
-    console.log(cidade)
+
+async function cliqueiNoBotao() { //async precisa ter para usar o await
+    let cidade = document.querySelector(".input-cidade").value
+    let chave = "fd81019b88f824c61751f21a103718ee"
+    let endereco = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${chave}`
+    //Precisa avisar o JavaScript que você vai até o servidor
+    //Traduzir a resposta do servidor / JSON
+    //Json = JavaScript object notation
+    let respostaServidor = await fetch(endereco) 
+    //await = esperar a resposta do servidor - fetch = busca no servidor
+    let dadosJson = await respostaServidor.jason()
+    console.log(dadosJason)
 }
