@@ -34,6 +34,6 @@ async function cliqueiNoBotao() { //async precisa ter para usar o await
     //Json = JavaScript object notation
     let respostaServidor = await fetch(endereco) 
     //await = esperar a resposta do servidor - fetch = busca no servidor
-    let dadosJson = await respostaServidor.jason()
-    console.log(dadosJason)
+    let dadosJson = await respostaServidor.json()
+    console.log(dadosJson)
 }
