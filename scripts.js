@@ -53,7 +53,7 @@ function detectaVoz() {
     reconhecimento.lang = "pt-BR"
     reconhecimento.start()
     reconhecimento.onresult = function(evento) {
-       let textoTranscrito = evento.results.[0].[0].transcript
+       let textoTranscrito = evento.results[0][0].transcript
        document.querySelector(".input-cidade").value = textoTranscrito
        cliqueiNoBotao()
     }
