@@ -6,13 +6,13 @@ Fluxo básico
 [x] Descobrir quando o botão foi clicado
 [x] Pegar o nome da cidade no input
 [x] Enviar a cidade para o servidor
-[] Pegar a resposta e colocar na tela
+[x] Pegar a resposta e colocar na tela
 
 Flúxo de voz
-[] Descobrir quando o botão foi clicado
-[] Começar a ouvir e pegar a transcrição 
-[] Enviar a transcrição para o sevidor 
-[] Pegar a resposta e colocar na tela
+[x] Descobrir quando o botão foi clicado
+[x] Começar a ouvir e pegar a transcrição 
+[x] Enviar a transcrição para o sevidor 
+[x] Pegar a resposta e colocar na tela
 
 Fluxo IA
 [] Pegar os dados da cidade
@@ -42,8 +42,19 @@ async function cliqueiNoBotao() { //async precisa ter para usar o await
         <h2 class="cidade">${dadosJson.name}</h2>
         <p class="temp">${Math.floor(dadosJson.main.temp)} °C</p>
         <img class="icone" src="https://openweathermap.org/img/wn/${dadosJson.weather[0].icon}.png">
-        <p class="umidade">Umidade: ${dadosJson.main.humidity}</p>
+        <p class="umidade">Umidade: ${dadosJson.main.humidity}%</p>
         <button class="botao-ia">Sugestão de Roupa</button>
-        <p class="resposta-ia">Resposta da IA</p>
+        <p class="resposta-ia"></p>
     `
+}
+
+function detectaVoz() {
+    let reconhecimento = new window.webkitSpeechRecognition()
+    reconhecimento.lang = "pt-BR"
+    reconhecimento.start()
+    reconhecimento.onresult = function(evento) {
+       let textoTranscrito = evento.results.[0].[0].transcript
+       document.querySelector(".input-cidade").value = textoTranscrito
+       cliqueiNoBotao()
+    }
 }
