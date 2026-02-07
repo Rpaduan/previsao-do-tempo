@@ -38,10 +38,10 @@ async function cliqueiNoBotao() { //async precisa ter para usar o await
     //await = esperar a resposta do servidor - fetch = busca no servidor
     let dadosJson = await respostaServidor.json()
     console.log(dadosJson)
-    //Math.floor = arredonda para baixo
-    caixa.innerHTML = `
+        caixa.innerHTML = //Math.floor = arredonda para baixo 
+        `
         <h2 class="cidade">${dadosJson.name}</h2>
-        <p class="temp">${Math.floor(dadosJson.main.temp)} °C</p>
+        <p class="temp">${Math.floor(dadosJson.main.temp)} °C</p>   
         <img class="icone" src="https://openweathermap.org/img/wn/${dadosJson.weather[0].icon}.png">
         <p class="umidade">Umidade: ${dadosJson.main.humidity}%</p>
         <button class="botao-ia" onclick="pedirSugestaoRoupa()">Sugestão de Roupa</button>
